@@ -1,0 +1,9 @@
+{
+    "tlaplus.modelChecker.parameters": "-deadlock",
+    "tlaplus.modelChecker.files": [
+        "verification/OfficeSpec.tla"
+    ],
+    "tlaplus.modelChecker.configs": [
+        "verification/OfficeSpec.cfg"
+    ]
+}
