@@ -1,0 +1,207 @@
+[
+    {
+        "id": "2542fa1a0113edac",
+        "type": "tab",
+        "label": "Office Monitor",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "68621ff0e5a0349e",
+        "type": "inject",
+        "z": "2542fa1a0113edac",
+        "name": "Update Data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "74cb6355488a4e93"
+            ]
+        ]
+    },
+    {
+        "id": "74cb6355488a4e93",
+        "type": "function",
+        "z": "2542fa1a0113edac",
+        "name": "Create Clean Data",
+        "func": "// Generate clean sensor data without JSON artifacts\nconst data = {\n    temp: (20 + 5*Math.random()).toFixed(1),\n    hum: (40 + 20*Math.random()).toFixed(1),\n    lux: Math.floor(300 + 700*Math.random()),\n    occupied: Math.random() > 0.7\n};\n\n// Create separate messages for each dashboard element\nmsg.temperature = {\n    payload: data.temp,\n    dashboard: { topic: \"temperature\" }\n};\n\nmsg.humidity = {\n    payload: data.hum,\n    dashboard: { topic: \"humidity\" }\n};\n\nmsg.light = {\n    payload: data.lux,\n    dashboard: { topic: \"light\" }\n};\n\nmsg.status = {\n    payload: data.occupied ? \"OCCUPIED\" : \"VACANT\",\n    dashboard: { topic: \"status\" }\n};\n\nreturn [msg.temperature, msg.humidity, msg.light, msg.status];",
+        "outputs": 4,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 100,
+        "wires": [
+            [
+                "50487ff709854358"
+            ],
+            [
+                "e426bff7ff57032e"
+            ],
+            [
+                "1c12b16fc4b831ed"
+            ],
+            [
+                "092ce38405165d21"
+            ]
+        ]
+    },
+    {
+        "id": "50487ff709854358",
+        "type": "ui_gauge",
+        "z": "2542fa1a0113edac",
+        "name": "",
+        "group": "8",
+        "order": 0,
+        "width": "6",
+        "height": "6",
+        "gtype": "gage",
+        "title": "Temperature °C",
+        "label": "",
+        "format": "{{value}}",
+        "min": "15",
+        "max": "35",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "20",
+        "seg2": "28",
+        "x": 570,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e426bff7ff57032e",
+        "type": "ui_gauge",
+        "z": "2542fa1a0113edac",
+        "name": "",
+        "group": "8",
+        "order": 1,
+        "width": "6",
+        "height": "6",
+        "gtype": "gage",
+        "title": "Humidity %",
+        "label": "",
+        "format": "{{value}}",
+        "min": "30",
+        "max": "70",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "40",
+        "seg2": "60",
+        "x": 570,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1c12b16fc4b831ed",
+        "type": "ui_chart",
+        "z": "2542fa1a0113edac",
+        "name": "",
+        "group": "9",
+        "order": 0,
+        "width": "12",
+        "height": "6",
+        "label": "Light Level (lux)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "200",
+        "ymax": "1000",
+        "removeOlder": 10,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#FF9900"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 570,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "092ce38405165d21",
+        "type": "ui_text",
+        "z": "2542fa1a0113edac",
+        "group": "10",
+        "order": 0,
+        "width": "12",
+        "height": "2",
+        "name": "",
+        "label": "Room Status:",
+        "format": "{{payload}}",
+        "layout": "row-spread",
+        "x": 570,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "8",
+        "type": "ui_group",
+        "name": "Sensors",
+        "tab": "11",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "9",
+        "type": "ui_group",
+        "name": "Trends",
+        "tab": "11",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "10",
+        "type": "ui_group",
+        "name": "Status",
+        "tab": "11",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "11",
+        "type": "ui_tab",
+        "name": "Office Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

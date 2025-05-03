@@ -1,17 +1,13 @@
-1. Install the TLA+ VS Code extensions
-2. Open the `verification` folder in VS Code
-3. The specification includes:
-   - Temperature bounds (15-30°C)
-   - Humidity bounds (30-80%)
-   - Occupancy comfort requirements
-
-To verify:
+## 🛠️ Installation
 ```bash
-# In VS Code command palette:
-TLA+: Check Model with TLC
+pip install paho-mqtt
+npm install -g node-red node-red-dashboard
 ```
 
-Verification results show:
-- All safety properties are maintained
-- No deadlocks in the system
-- All processes are live
+## 🔍 Verification
+1. Install Java 8+
+2. Run model checking:
+```bash
+cd verification
+java -cp ../tla2tools.jar tlc2.TLC OfficeSpec.cfg
+```
