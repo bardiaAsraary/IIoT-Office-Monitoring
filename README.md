@@ -48,30 +48,31 @@ Install the required dependencies:
 ```
 pip install paho-mqtt
 npm install -g node-red node-red-dashboard
-⚙️ How to Run
+```
+## ⚙️ How to Run
+
 1. Start MQTT Broker (Mosquitto)
-bash
-Copy
-Edit
+```
 mosquitto -v
+```
 2. Run the Sensor Simulator
-bash
-Copy
-Edit
+```
 python src/sensor_simulator.py
+```
 3. Start Node-RED
-bash
-Copy
-Edit
+```
 node-red
+```
 4. Import Flows into Node-RED
+
 Import the file node_red/flows.json into your Node-RED editor.
 
 5. Access the Dashboard
+
 Open your browser and navigate to:
+```
 http://localhost:1880/ui
 ```
-
 ## 🔍 Formal Verification (TLA+)
 ### Requirements
 
@@ -90,8 +91,8 @@ For detailed explanations on system architecture, components, and instructions, 
 📘 docs/documentation.md
 
 ### 📦 Artifacts
+
 Sensor Simulation Code: src/sensor_simulator.py
-=======
 ---
 
 ## 🛠️ Technologies Used
@@ -111,40 +112,18 @@ pip install paho-mqtt
 npm install -g node-red node-red-dashboard
 ```
 ---
-
-## 🚦 How to Run
-
-1. **Start Mosquitto (MQTT Broker):**
-    
-    mosquitto -v
-    
-2. **Run the Sensor Simulator:**
-    
-    python src/sensor_simulator.py
-    
-3. **Start Node-RED:**
-    
-    node-red
-    
-    - Import the provided `node_red/flows.json` into your Node-RED instance.
-4. **Access the Dashboard:**
-    - Open your browser and go to [http://localhost:1880/ui](http://localhost:1880/ui)
-
----
-
 ## ✅ Verification
 
 1. **Install Java 8+** (required for TLA+ tools).
 2. **Run Model Checking:**
+
     ```
     cd Verification
     java -cp ../tla2tools.jar tlc2.TLC OfficeSpec.cfg
 ---
 
-TLA+ Verification Specs: Verification/
-
 Project Documentation: docs/documentation.md
-=======
+
 ## 📦 Artifacts
 
 | Artifact Type         | Path/Description                   |
@@ -155,7 +134,7 @@ Project Documentation: docs/documentation.md
 | Documentation         | `docs/documentation.md`            |
 ---
 
-=======
+
 ## 🔗 References
 
 - [Node-RED Documentation](https://nodered.org/docs/)
