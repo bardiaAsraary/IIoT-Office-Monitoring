@@ -16,36 +16,24 @@ Graceful shutdown on keyboard interrupt
 The simulator reads its settings from .vscode/settings.json.
 
 ### Example configuration
-
+```
 json
 {
-
-  "broker": "localhost",
-
-  "port": 1883,
-
-  "client_id": "OfficeSimulator",
-  
-  "zones": ["reception", "workspace", "meeting"],
-  
-  "publish_interval_seconds": 10,
-  
-  "topics_format": "office/{zone}/data",
-  
-  "sensor_ranges": {
-  
+    "broker": "localhost",
+    "port": 1883,
+    "client_id": "OfficeSimulator",
+    "zones": ["reception", "workspace", "meeting"],
+    "publish_interval_seconds": 10,
+    "topics_format": "office/{zone}/data",
+    "sensor_ranges": {
     "temperature": [15, 30],
-  
     "humidity": [30, 70],
-  
     "light": [0, 1000],
-  
     "occupancy": [0, 1]
-
   }
 }
-
-Key	Description
+```
+### Key	Description
 
 broker	MQTT broker address (e.g., localhost)
 port	MQTT broker port (default: 1883)
@@ -55,7 +43,7 @@ publish_interval_seconds	Time in seconds between data publications
 topics_format	MQTT topic format string (e.g., office/{zone}/data)
 sensor_ranges	Min/max values for each sensor type
 
-🔍 How It Works
+### 🔍 How It Works
 
 Loads configuration from .vscode/settings.json.
 
