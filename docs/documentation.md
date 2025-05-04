@@ -88,6 +88,7 @@ python sensor_simulator.py
 ### Stopping the simulator
 
 Press Ctrl+C to gracefully shut down.
+
 ---
 ## Code Structure
 
@@ -102,9 +103,13 @@ Graceful Shutdown: Handles keyboard interrupts to disconnect cleanly
 ## Example Output
 
 ✅ Successfully connected to MQTT broker
+
 📤 Published to office/reception/data: {'temperature': 22.4, 'humidity': 58.2, 'light': 721, 'occupancy': 1}
+
 📤 Published to office/workspace/data: {'temperature': 20.1, 'humidity': 42.7, 'light': 500, 'occupancy': 0}
+
 ...
+
 🛑 Shutting down sensor simulator...
 
 ---
