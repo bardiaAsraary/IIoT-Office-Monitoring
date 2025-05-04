@@ -1,4 +1,5 @@
 Overview
+
 The Sensor Simulator is a Python script that generates and publishes simulated environmental sensor data (temperature, humidity, light, occupancy) for various office zones. It uses MQTT to send data, making it ideal for testing IoT dashboards or pipelines, such as the Node-RED dashboard in this project.
 
 🚀 Features
