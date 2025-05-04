@@ -5,19 +5,6 @@
 **🏛️ University:** Università degli Studi di Messina  
 ---
 
-## 📑 Table of Contents
-
-- [Project Structure](#project-structure)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [How to Run](#how-to-run)
-- [Verification](#verification)
-- [Documentation](#documentation)
-- [Artifacts](#artifacts)
-- [Notes](#notes)
-- [References](#references)
----
-
 ## 📊 Dashboard Screenshot
 
 ![Dashboard](docs/dashboard.png)
@@ -36,7 +23,7 @@ This project demonstrates a simple **Industrial IoT (IIoT)** system that integra
 ---
 
 ## 🗂️ Project Structure
-
+```
 Project/
 ├── docs/
 │ ├── documentation.md # Detailed documentation
@@ -51,18 +38,14 @@ Project/
 │ └── states/ # TLC generated states
 ├── .gitignore
 ├── README.md
-
-yaml
-Copy
-Edit
-
+```
 ---
 
 ## 🛠️ Installation
 
 Install the required dependencies:
 
-```bash
+```
 pip install paho-mqtt
 npm install -g node-red node-red-dashboard
 ⚙️ How to Run
@@ -86,52 +69,29 @@ Import the file node_red/flows.json into your Node-RED editor.
 
 5. Access the Dashboard
 Open your browser and navigate to:
-
-bash
-Copy
-Edit
 http://localhost:1880/ui
-🔍 Formal Verification (TLA+)
-Requirements
+```
+
+## 🔍 Formal Verification (TLA+)
+### Requirements
+
 Java 8 or later
 
 TLA+ Tools
 
 Run Model Checker
-bash
-Copy
-Edit
+```
 cd Verification
 java -cp ../tla2tools.jar tlc2.TLC OfficeSpec.cfg
-📄 Documentation
+```
+### 📄 Documentation
 For detailed explanations on system architecture, components, and instructions, see:
 
 📘 docs/documentation.md
 
-📦 Artifacts
+### 📦 Artifacts
 Sensor Simulation Code: src/sensor_simulator.py
 =======
----
-
-## 📁 Project Structure
-
-Project/
-├── docs/
-│ ├── documentation.md
-│ └── dashboard.png
-├── node_red/
-│ └── flows.json
-├── src/
-│ └── sensor_simulator.py
-├── Verification/
-│ ├── OfficeSpec.cfg
-│ ├── OfficeSpec.tla
-│ └── states/
-├── .gitignore
-├── README.md
-
-text
-
 ---
 
 ## 🛠️ Technologies Used
@@ -146,28 +106,26 @@ text
 ## ⚙️ Installation
 
 Install the required dependencies:
-
+```
 pip install paho-mqtt
 npm install -g node-red node-red-dashboard
-
-text
-
+```
 ---
 
 ## 🚦 How to Run
 
 1. **Start Mosquitto (MQTT Broker):**
-    ```
+    
     mosquitto -v
-    ```
+    
 2. **Run the Sensor Simulator:**
-    ```
+    
     python src/sensor_simulator.py
-    ```
+    
 3. **Start Node-RED:**
-    ```
+    
     node-red
-    ```
+    
     - Import the provided `node_red/flows.json` into your Node-RED instance.
 4. **Access the Dashboard:**
     - Open your browser and go to [http://localhost:1880/ui](http://localhost:1880/ui)
@@ -181,29 +139,11 @@ text
     ```
     cd Verification
     java -cp ../tla2tools.jar tlc2.TLC OfficeSpec.cfg
-    ```
-
----
-
-## 📚 Documentation
-
-- See `docs/documentation.md` for a detailed explanation of the system, design choices, and usage instructions.
-- Node-RED dashboard screenshot:  
-  ![Dashboard Screenshot](docs/dashboard.png)
->>>>>>> 7b015e96dfa264e887ced86643b7982220b4e2aa
-
 ---
 
 TLA+ Verification Specs: Verification/
 
 Project Documentation: docs/documentation.md
-
-📝 Notes
-Ensure all tools are correctly installed and compatible with your OS.
-
-This project is designed for reproducibility and educational use.
-
-For questions or issues, refer to the documentation or contact the author.
 =======
 ## 📦 Artifacts
 
@@ -213,18 +153,8 @@ For questions or issues, refer to the documentation or contact the author.
 | Node-RED Flows        | `node_red/flows.json`              |
 | Formal Verification   | TLA+ specs in `Verification/`      |
 | Documentation         | `docs/documentation.md`            |
-
 ---
 
-## 📝 Notes
-
-- Ensure all software is installed and running on compatible versions.
-- The project is designed for reproducibility and can serve as a demonstrator or teaching material for IIoT concepts.
-- For any issues or questions, please refer to the documentation or contact the project author.
-
----
-
-Paho MQTT Python Client
 =======
 ## 🔗 References
 
