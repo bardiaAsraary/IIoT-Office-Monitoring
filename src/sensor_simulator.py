@@ -2,6 +2,22 @@ import random
 import time
 import paho.mqtt.client as mqtt
 import json
+import json
+
+with open(".vscode\settings.json") as f:
+    config = json.load(f)
+
+# Simulator settings
+broker = config["broker"]
+port = config["port"]
+client_id = config["client_id"]
+zones = config["zones"]
+publish_interval = config["publish_interval_seconds"]
+topics_format = config["topics_format"]
+sensor_ranges = config["sensor_ranges"]
+
+# (Optional) Access TLA+ settings if needed
+tlaplus_settings = config.get("tlaplus", {}).get("modelChecker", {})
 
 broker = "localhost"
 client_id = "OfficeSimulator"

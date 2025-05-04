@@ -1,3 +1,22 @@
 {
-    "tlaplus.tlc.modelChecker.options": "-coverage 1"
-}
+    "broker": "localhost",
+    "port": 1883,
+    "client_id": "OfficeSimulator",
+    "zones": ["reception", "workspace", "meeting"],
+    "publish_interval_seconds": 10,
+    "topics_format": "office/{zone}/data",
+    "sensor_ranges": {
+      "temperature": {"min": 20, "max": 25, "precision": 1},
+      "humidity": {"min": 40, "max": 70, "precision": 1},
+      "light": {"min": 0, "max": 1000},
+      "occupancy": [0, 1]
+    },
+    "tlaplus": {
+      "modelChecker": {
+        "parameters": ["-deadlock", "-coverage 1"],
+        "files": ["verification/OfficeSpec.tla"],
+        "configs": ["verification/OfficeSpec.cfg"]
+      }
+    }
+  }
+  
