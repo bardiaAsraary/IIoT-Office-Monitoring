@@ -19,19 +19,32 @@ The simulator reads its settings from .vscode/settings.json.
 
 json
 {
+
   "broker": "localhost",
+
   "port": 1883,
+
   "client_id": "OfficeSimulator",
+  
   "zones": ["reception", "workspace", "meeting"],
+  
   "publish_interval_seconds": 10,
+  
   "topics_format": "office/{zone}/data",
+  
   "sensor_ranges": {
+  
     "temperature": [15, 30],
+  
     "humidity": [30, 70],
+  
     "light": [0, 1000],
+  
     "occupancy": [0, 1]
+
   }
 }
+
 Key	Description
 
 broker	MQTT broker address (e.g., localhost)
@@ -41,7 +54,9 @@ zones	List of simulated office zones
 publish_interval_seconds	Time in seconds between data publications
 topics_format	MQTT topic format string (e.g., office/{zone}/data)
 sensor_ranges	Min/max values for each sensor type
+
 🔍 How It Works
+
 Loads configuration from .vscode/settings.json.
 
 Connects to the MQTT broker using the Paho MQTT client.
@@ -76,9 +91,11 @@ Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to gracefully stop the simulator.
 
 ## 📋 Example Output
 
-text
+
 ✅ Successfully connected to MQTT broker
+
 📤 Published to office/reception/data: {'temperature': 22.1, 'humidity': 55.3, 'light': 812, 'occupancy': 1}
+
 📤 Published to office/workspace/data: {'temperature': 21.7, 'humidity': 44.2, 'light': 533, 'occupancy': 0}
 ...
 🛑 Shutting down sensor simulator...
