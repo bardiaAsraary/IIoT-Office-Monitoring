@@ -7,7 +7,6 @@
 
 ## 📑 Table of Contents
 
-- [Overview](#overview)
 - [Project Structure](#project-structure)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)

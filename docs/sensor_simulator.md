@@ -1,7 +1,7 @@
-Overview
+# Overview
 The Sensor Simulator is a Python script that generates and publishes simulated environmental sensor data (temperature, humidity, light, occupancy) for various office zones. It uses MQTT to send data, making it ideal for testing IoT dashboards or pipelines, such as the Node-RED dashboard in this project.
 
-🚀 Features
+## 🚀  Features
 Simulates multiple office zones (e.g., reception, workspace, meeting)
 
 Publishes realistic random sensor data
@@ -12,10 +12,11 @@ Configurable via a JSON settings file
 
 Graceful shutdown on keyboard interrupt
 
-⚙️ Configuration
+## ⚙️ Configuration
 The simulator reads its settings from .vscode/settings.json.
 
-Example configuration
+### Example configuration
+
 json
 {
   "broker": "localhost",
@@ -32,6 +33,7 @@ json
   }
 }
 Key	Description
+
 broker	MQTT broker address (e.g., localhost)
 port	MQTT broker port (default: 1883)
 client_id	MQTT client identifier
@@ -58,7 +60,8 @@ Publishes data to topics like office/reception/data.
 
 Repeats at the configured interval until interrupted.
 
-▶️ Usage
+## ▶️ Usage
+
 1. Install Dependencies
 bash
 pip install paho-mqtt
@@ -71,7 +74,8 @@ python src/sensor_simulator.py
 4. Stop the Simulator
 Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to gracefully stop the simulator.
 
-📋 Example Output
+## 📋 Example Output
+
 text
 ✅ Successfully connected to MQTT broker
 📤 Published to office/reception/data: {'temperature': 22.1, 'humidity': 55.3, 'light': 812, 'occupancy': 1}
@@ -95,6 +99,8 @@ Import errors: Install all dependencies (pip install paho-mqtt).
 Configuration errors: Verify .vscode/settings.json for typos or missing fields.
 
 </details>
-📂 Source Code
+
+## 📂 Source Code
+
 The simulator script is located at:
 src/sensor_simulator.py
