@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 # 🚀 Industrial IoT Project
 
 **👤 Student:** Bardia Asrari  
 **📘 Course:** Industrial IoT  
 **🏛️ University:** Università degli Studi di Messina  
-=======
-# Industrial IoT Project
-
-**Author:** Bardia Asrari  
-**Course:** Industrial IoT  
-**University:** Università degli Studi di Messina
-
 ---
 
 ## 📑 Table of Contents
@@ -25,12 +17,6 @@
 - [Artifacts](#artifacts)
 - [Notes](#notes)
 - [References](#references)
-
----
-
-## 📝 Overview
->>>>>>> 7b015e96dfa264e887ced86643b7982220b4e2aa
-
 ---
 
 ## 📊 Dashboard Screenshot
@@ -52,7 +38,6 @@ This project demonstrates a simple **Industrial IoT (IIoT)** system that integra
 
 ## 🗂️ Project Structure
 
-<<<<<<< HEAD
 Project/
 ├── docs/
 │ ├── documentation.md # Detailed documentation
@@ -210,7 +195,6 @@ text
 
 ---
 
-<<<<<<< HEAD
 TLA+ Verification Specs: Verification/
 
 Project Documentation: docs/documentation.md
@@ -238,15 +222,12 @@ For questions or issues, refer to the documentation or contact the author.
 - Ensure all software is installed and running on compatible versions.
 - The project is designed for reproducibility and can serve as a demonstrator or teaching material for IIoT concepts.
 - For any issues or questions, please refer to the documentation or contact the project author.
->>>>>>> 7b015e96dfa264e887ced86643b7982220b4e2aa
 
 ---
 
-<<<<<<< HEAD
 Paho MQTT Python Client
 =======
 ## 🔗 References
->>>>>>> 7b015e96dfa264e887ced86643b7982220b4e2aa
 
 - [Node-RED Documentation](https://nodered.org/docs/)
 - [Paho MQTT Python](https://www.eclipse.org/paho/index.php?page=clients/python/index.php)
