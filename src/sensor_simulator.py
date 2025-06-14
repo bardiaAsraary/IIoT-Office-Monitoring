@@ -1,56 +1,54 @@
-import random
-import time
 import paho.mqtt.client as mqtt
-import json
-import json
+import ssl
+import time
+import random
 
-with open(".vscode\settings.json") as f:
-    config = json.load(f)
 
-# Simulator settings
-broker = config["broker"]
-port = config["port"]
-client_id = config["client_id"]
-zones = config["zones"]
-publish_interval = config["publish_interval_seconds"]
-topics_format = config["topics_format"]
-sensor_ranges = config["sensor_ranges"]
+# Broker Configuration
+BROKER_ADDRESS = "localhost"
+PORT = 8884
+TOPIC = "sensor/temperature"
 
-# (Optional) Access TLA+ settings if needed
-tlaplus_settings = config.get("tlaplus", {}).get("modelChecker", {})
+# TLS Certificate Paths
+CA_CERT = "certs/ca.crt"
+CLIENT_CERT = "certs/client-cert.pem"
+CLIENT_KEY = "certs/client-key.pem"
 
-broker = "localhost"
-client_id = "OfficeSimulator"
+# Create MQTT Client
+client = mqtt.Client()
 
-# Initialize client with MQTTv2 API
-client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id)
+# Configure TLS
+client.tls_set(
+    ca_certs=CA_CERT,
+    certfile=CLIENT_CERT,
+    keyfile=CLIENT_KEY,
+    tls_version=ssl.PROTOCOL_TLSv1_2
+)
+client.tls_insecure_set(False)
 
-def on_connect(client, userdata, flags, reason_code, properties):
-    if reason_code == 0:
-        print("✅ Successfully connected to MQTT broker")
+# On Connect Callback
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+        print("✅ Connected securely to broker.")
     else:
-        print(f"❌ Connection failed: {reason_code}")
+        print(f"❌ Failed to connect. Return code={rc}")
 
-def simulate_sensors():
-    zones = ["reception", "workspace", "meeting"]
-    try:
-        while True:
-            for zone in zones:
-                data = {
-                    "temperature": round(20 + 5 * random.random(), 1),
-                    "humidity": round(40 + 30 * random.random(), 1),
-                    "light": random.randint(0, 1000),
-                    "occupancy": random.choice([0, 1])
-                }
-                client.publish(f"office/{zone}/data", json.dumps(data))
-                print(f"📤 Published to office/{zone}/data: {data}")
-            time.sleep(10)
-    except KeyboardInterrupt:
-        print("\n🛑 Shutting down sensor simulator...")
-        client.disconnect()
+client.on_connect = on_connect
 
-if __name__ == "__main__":
-    client.on_connect = on_connect
-    client.connect(broker, 1883, 60)  # Explicit port and timeout
-    client.loop_start()
-    simulate_sensors()
+# Connect to Broker
+print("🔄 Connecting to MQTT broker...")
+client.connect(BROKER_ADDRESS, PORT)
+client.loop_start()
+
+# Publish simulated data
+try:
+    while True:
+        temp = round(random.uniform(20.0, 30.0), 2)
+        print(f"📤 Publishing {temp}°C to topic '{TOPIC}'")
+        client.publish(TOPIC, str(temp))
+        time.sleep(3)
+except KeyboardInterrupt:
+    print("\n🛑 Stopping simulator...")
+    client.loop_stop()
+    client.disconnect()
+

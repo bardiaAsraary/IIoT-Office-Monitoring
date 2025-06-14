@@ -53,7 +53,7 @@ npm install -g node-red node-red-dashboard
 
 1. Start MQTT Broker (Mosquitto)
 ```
-mosquitto -v
+net start mosquitto
 ```
 2. Run the Sensor Simulator
 ```
@@ -71,7 +71,7 @@ Import the file node_red/flows.json into your Node-RED editor.
 
 Open your browser and navigate to:
 ```
-http://localhost:1880/ui
+http://127.0.0.1:1880/
 ```
 ## 🔍 Formal Verification (TLA+)
 ### Requirements

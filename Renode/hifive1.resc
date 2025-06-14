@@ -1,0 +1,10 @@
+using sysbus
+mach create "HiFive1"
+machine LoadPlatformDescription @platforms/cpus/sifive-hifive1.repl
+
+# Load firmware
+sysbus LoadELF @firmware.elf
+
+# Network setup
+emulation CreateNetwork "iot_net"
+connector Connect sysbus.eth0 iot_net

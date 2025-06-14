@@ -1,0 +1,22 @@
+{
+  "workers": [{
+    "type": "router",
+    "options": {
+      "tls": {
+        "ca_certificates": ["ca-cert.pem"],
+        "require_certificates": true
+      }
+    },
+    "transports": [{
+      "type": "web",
+      "endpoint": {
+        "type": "tcp",
+        "port": 443,
+        "tls": {
+          "certificate": "server-cert.pem",
+          "key": "server-key.pem"
+        }
+      }
+    }]
+  }]
+}
