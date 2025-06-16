@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "node-red-contrib-wamp": "^0.0.7",
+    "node-red-dashboard": "^3.6.5"
+  }
+}

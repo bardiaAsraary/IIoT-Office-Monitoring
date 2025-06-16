@@ -1,0 +1,82 @@
+[
+    {
+        "id": "wamp-connection",
+        "type": "wamp",
+        "broker": "wss://localhost:8080/ws",
+        "realm": "iot_realm",
+        "tls": {
+            "ca": "../certs/ca-cert.pem",
+            "cert": "../certs/mcu-cert.pem",
+            "key": "../certs/mcu-key.pem"
+        },
+        "autoReconnect": true
+    },
+    {
+        "id": "sensor-data",
+        "type": "wamp in",
+        "name": "",
+        "topic": "dashboard.update",
+        "broker": "wamp-connection",
+        "x": 300,
+        "y": 200,
+        "wires": [
+            ["json-parse"]
+        ]
+    },
+    {
+        "id": "json-parse",
+        "type": "json",
+        "name": "",
+        "property": "payload",
+        "x": 450,
+        "y": 200,
+        "wires": [
+            ["temperature-gauge", "humidity-gauge"]
+        ]
+    },
+    {
+        "id": "temperature-gauge",
+        "type": "ui_gauge",
+        "name": "Temperature",
+        "group": "dashboard",
+        "order": 0,
+        "width": 6,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Temperature °C",
+        "min": 15,
+        "max": 35,
+        "colors": ["#00b500", "#e6e600", "#ca3838"],
+        "seg1": 20,
+        "seg2": 28,
+        "x": 650,
+        "y": 150,
+        "wires": []
+    },
+    {
+        "id": "humidity-gauge",
+        "type": "ui_gauge",
+        "name": "Humidity",
+        "group": "dashboard",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Humidity %",
+        "min": 30,
+        "max": 80,
+        "colors": ["#00b500", "#e6e600", "#ca3838"],
+        "seg1": 40,
+        "seg2": 60,
+        "x": 650,
+        "y": 250,
+        "wires": []
+    },
+    {
+        "id": "dashboard",
+        "type": "ui_group",
+        "name": "Sensors",
+        "tab": "main",
+        "order": 1
+    }
+]
