@@ -1,6 +1,6 @@
 # 🏭 Industrial IoT Monitoring System with Secure WAMP Communication
 
-![Dashboard](docs/dashboard.png)
+![Dashboard](./dashboard.png)
 
 
 ## 📌 Overview
