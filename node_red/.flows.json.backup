@@ -1,0 +1,182 @@
+[
+    {
+        "id": "732448932eb1a130",
+        "type": "tab",
+        "label": "Recovered Nodes",
+        "disabled": false,
+        "info": "The nodes on this flow were missing a valid flow id when they were imported. They have been added to this flow so you can either restore or delete them.",
+        "env": []
+    },
+    {
+        "id": "e70025cb64570f1f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "dashboard",
+        "type": "ui_group",
+        "name": "Sensors",
+        "tab": "main",
+        "order": 1
+    },
+    {
+        "id": "wamp-connection",
+        "type": "wamp",
+        "broker": "wss://localhost:8080/ws",
+        "realm": "iot_realm",
+        "tls": {
+            "ca": "../certs/ca-cert.pem",
+            "cert": "../certs/mcu-cert.pem",
+            "key": "../certs/mcu-key.pem"
+        },
+        "autoReconnect": true
+    },
+    {
+        "id": "sensor-data",
+        "type": "wamp in",
+        "z": "732448932eb1a130",
+        "name": "",
+        "topic": "dashboard.update",
+        "broker": "wamp-connection",
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "json-parse"
+            ]
+        ]
+    },
+    {
+        "id": "json-parse",
+        "type": "json",
+        "z": "732448932eb1a130",
+        "name": "",
+        "property": "payload",
+        "x": 450,
+        "y": 200,
+        "wires": [
+            [
+                "temperature-gauge",
+                "humidity-gauge"
+            ]
+        ]
+    },
+    {
+        "id": "temperature-gauge",
+        "type": "ui_gauge",
+        "z": "732448932eb1a130",
+        "name": "Temperature",
+        "group": "dashboard",
+        "order": 0,
+        "width": 6,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Temperature °C",
+        "min": 15,
+        "max": 35,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": 20,
+        "seg2": 28,
+        "x": 650,
+        "y": 150,
+        "wires": []
+    },
+    {
+        "id": "humidity-gauge",
+        "type": "ui_gauge",
+        "z": "732448932eb1a130",
+        "name": "Humidity",
+        "group": "dashboard",
+        "order": 1,
+        "width": 6,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Humidity %",
+        "min": 30,
+        "max": 80,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": 40,
+        "seg2": 60,
+        "x": 650,
+        "y": 250,
+        "wires": []
+    },
+    {
+        "id": "b2367766a8771664",
+        "type": "inject",
+        "z": "732448932eb1a130",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 360,
+        "wires": [
+            [
+                "3c880740d01289db"
+            ]
+        ]
+    },
+    {
+        "id": "3c880740d01289db",
+        "type": "exec",
+        "z": "732448932eb1a130",
+        "command": "node",
+        "addpay": "",
+        "append": "./wamp-client/wamp-client.js",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 450,
+        "y": 360,
+        "wires": [
+            [],
+            [
+                "7fb7b27e866883fd"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7fb7b27e866883fd",
+        "type": "debug",
+        "z": "732448932eb1a130",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 360,
+        "wires": []
+    }
+]

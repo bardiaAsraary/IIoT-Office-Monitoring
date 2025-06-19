@@ -1,6 +1,6 @@
 # 🏭 Industrial IoT Monitoring System with Secure WAMP Communication
 
-![Dashboard](docs/dashboard.png)
+![Dashboard](./dashboard.png)
 
 
 ## 📌 Overview
@@ -14,7 +14,7 @@ A **secure industrial IoT monitoring system** featuring:
 
 ## 🚀 Quick Start
 ### Prerequisites
-```bash
+```
 # Ubuntu/Debian (Linux/macOS/WSL)
 sudo apt update && sudo apt install -y \
     git python3-pip build-essential \
@@ -103,6 +103,7 @@ npm install -g --unsafe-perm node-red
 npm install node-red-contrib-wamp  # WAMP plugin
 
 node-red flows/dashboard.json  # Start dashboard
+npx node-red flows/dashboard.json
 ```
 👉 Access at: http://localhost:1880/ui
 

@@ -1,0 +1,24 @@
+const autobahn = require('autobahn');
+
+const connection = new autobahn.Connection({
+    url: 'wss://demo.crossbar.io/ws',
+    realm: 'realm1'
+});
+
+connection.onopen = function (session) {
+    console.log('Connected to WAMP');
+
+    // Subscribe to topic
+    session.subscribe('com.myapp.topic1', function (args) {
+        const msg = args[0];
+        console.log('[WAMP EVENT]', msg);
+        // Send to Node-RED via stdout
+        process.stdout.write(JSON.stringify(msg) + '\n');
+    });
+};
+
+connection.onclose = function () {
+    console.error('WAMP connection closed');
+};
+
+connection.open();

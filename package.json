@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "node-red-contrib-wamp": "^0.0.7",
+    "@node-red/nodes": "^4.0.9",
+    "autobahn": "^22.11.1",
+    "node-red-contrib-open-protocol": "github:st-one-io/node-red-contrib-open-protocol",
     "node-red-dashboard": "^3.6.5"
   }
 }

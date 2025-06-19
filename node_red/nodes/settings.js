@@ -1,0 +1,1 @@
+nodesDir: [path.join(__dirname,"nodes"), "/absolute/path/to/wamp/nodes"]
